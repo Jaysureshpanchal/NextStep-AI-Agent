@@ -361,25 +361,31 @@ Repeated request → already executed
 
 ------------------------------------------------------------------------
 
-## 16. Curveball Response
+## 16.Curveball Response
 
-The architecture treats new information as a reason to reassess rather
-than blindly continue with an old recommendation.
+### Change received
 
-``` text
-Old recommendation
-       ↓
-New information
-       ↓
-Reassess
-       ↓
-New priorities
-       ↓
-New recommendation
-```
+The team sent the following change during the challenge:
 
-The prototype demonstrates this through the reassessment endpoint while
-keeping full external state integration stubbed.
+> "Users are annoyed by confirmations. One says: just do everything, stop asking me."
+> — Harshul, HAZHTeq Innovations
+
+### My response
+
+I agreed that confirmation on every step creates unnecessary friction, but I did not remove confirmation from consequential actions.
+
+I adjusted the approach to distinguish between reversible and consequential actions:
+
+- Reversible actions such as creating a task, calculating time, reviewing information, or preparing a draft can proceed without an additional confirmation.
+- Consequential external actions such as sending a message require confirmation immediately before execution.
+- The agent should show the exact message/content before an external action is executed.
+- Pending actions are stored separately from executed actions so an action cannot accidentally execute twice.
+
+This keeps the normal interaction faster while preserving user control over actions that can have external consequences.
+
+### Trade-off
+
+The trade-off is between convenience and user control. Removing every confirmation would make the agent faster, but it could also allow an unintended message or other external action to be performed. Therefore, confirmation is kept at the execution boundary rather than throughout the reasoning and planning process.
 
 ------------------------------------------------------------------------
 
@@ -520,5 +526,3 @@ Confirmation
     ↓
 Execution
 ```
-
-
